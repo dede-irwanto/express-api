@@ -2,6 +2,12 @@ const express = require("express");
 const app = express();
 const port = 3001;
 
+// import cors library
+const cors = require("cors");
+
+// user cors
+app.use(cors());
+
 // import body parser
 const bodyParser = require("body-parser");
 
