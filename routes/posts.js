@@ -1,5 +1,5 @@
 const express = require("express");
-const router = express.Router;
+const router = express.Router();
 
 // import database
 const connection = require("../config/database");
@@ -8,7 +8,7 @@ const connection = require("../config/database");
 router.get("/", function (req, res) {
   // query
   connection.query(
-    "SELECT * FROM posts ORDER BY id DESC",
+    "SELECT * FROM posts ORDER BY id desc",
     function (err, rows) {
       if (err) {
         return res.status(500).json({
