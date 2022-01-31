@@ -46,34 +46,30 @@ router.post(
       return res.status(422).json({
         errors: errors.array(),
       });
-
-      // define form data
-      let formData = {
-        title: req.body.title,
-        content: req.body.content,
-      };
-
-      // insert query
-      connection.query(
-        "INSERT INTO posts SET ?",
-        formData,
-        function (err, rows) {
-          // throw error
-          if (err) {
-            return res.status(500).json({
-              status: false,
-              message: "Internal Server Error",
-            });
-          } else {
-            return res.status(200).json({
-              status: true,
-              message: "Insert Data Successfully",
-              data: rows[0],
-            });
-          }
-        }
-      );
     }
+
+    // define form data
+    let formData = {
+      title: req.body.title,
+      content: req.body.content,
+    };
+
+    // insert query
+    connection.query("INSERT INTO posts SET ?", formData, function (err, rows) {
+      // throw error
+      if (err) {
+        return res.status(500).json({
+          status: false,
+          message: "Internal Server Error",
+        });
+      } else {
+        return res.status(200).json({
+          status: true,
+          message: "Insert Data Successfully",
+          data: rows[0],
+        });
+      }
+    });
   }
 );
 
